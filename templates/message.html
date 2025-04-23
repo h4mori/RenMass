@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="files/style.css">
+    <link rel="icon" href="files/img/icon.png">
+    <title>RenMass - Сообщение</title>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+                <img class="logo" src="files/img/icon.png">
+                <span>RenMass</span>
+            <hr>
+            <div class="dropdown">
+                <img src="files/img/users/{{ username }}.png" alt="User" class="user-icon">
+                <span onclick="myFunction()" class="dropbtn">{{ first_name }} ⬇️</span>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/logout">⬅️ Выход</a>
+                </div>
+            </div>
+            <hr>
+            <nav>
+                <a href="/">Главная</a>
+                <a href="#">Сообщение</a>
+                <a href="/tables">Таблицы</a>
+                <a href="/settings">Настройки</a>
+            </nav>
+            <hr>
+            <center>
+                <a>
+                    Copyright<br>© Моисеенко Н. А., 2025 
+                </a>
+            </center>
+        </aside>
+
+        <main class="main-content">
+            <div class="stats">
+                {{ tables }}
+            </div>
+            <center>
+            <div>
+                <h1>Главная</h1>
+            </div>
+            <form method="POST">
+                <!-- CONTENT -->
+                <input type="text" name="title" class="input_wrap" placeholder="Тема сообщения" value="{{ title }}" required><br>
+                <textarea name="subject" rows="10" cols="10" class="width: 10px;" placeholder="Содержание сообщения">{{ subject }}</textarea><br>
+                <input type="checkbox" id="massmail" name="massmail">
+                <label for="massmail">Начать рассылку</label><br><br> 
+                {% if tables %}        
+                <button class="btn2" type="submit">Сохранить</button></a>
+                {% else %}
+                <button class="btn2" type="submit" disabled>Сохранить</button></a>
+                {% endif %}
+            </form>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="files/js/script.js"></script>
+<script src="files/js/dropdown.js"></script>
+</html>

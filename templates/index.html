@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="files/style.css">
+    <link rel="icon" href="files/img/icon.png">
+    <title>RenMass - Главная</title>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+                <img class="logo" src="files/img/icon.png">
+                <span>RenMass</span>
+            <hr>
+            <div class="dropdown">
+                <img src="files/img/users/{{ username }}.png" alt="User" class="user-icon">
+                <span onclick="myFunction()" class="dropbtn">{{ first_name }} ⬇️</span>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/logout">⬅️ Выход</a>
+                </div>
+            </div>
+            <hr>
+            <nav>
+                <a href="#">Главная</a>
+                <a href="/message">Сообщение</a>
+                <a href="/tables">Таблицы</a>
+                <a href="/settings">Настройки</a>
+            </nav>
+            <hr>
+            <center>
+                <a>
+                    Copyright<br>© Моисеенко Н. А., 2025 
+                </a>
+            </center>
+        </aside>
+
+        <main class="main-content">
+            <div class="stats">
+                <div class="stat-block">
+                    <span class="icon"><img src="files/img/github.png" width="32" height="32"></span>
+                    <div>
+                        <div>GitHub</div>
+                        <div><a href="https://github.com/h4mori/renmass" target="_blank">Перейти</a></div>
+                    </div>
+                </div>
+                <div class="stat-block">
+                    <span class="icon"><img src="files/img/telegram.png" width="32" height="32"></span>
+                    <div>
+                        <div>Telegram</div>
+                        <div><a href="https://t.me/h4mori" target="_blank">Нужна помощь?</a></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <center>
+                    <h1>RenMass</h1>
+                    <h3>Простая система рассылки электронных сообщений</h3>
+                </center>
+            </div>
+            <hr class="main">
+            <div>
+                <h4>RenMass - это программа для массовой рассылки сообщений определенным лицам, которая распространяется под бесплатной лицензией.<br>Если вы купили этот софт - поздравляю, вы стали жертвой мошенников.</h4>
+                <p>Перед началом работы с программой, пожалуйста, настройте ее в соответствии с документацией.</p>
+            </div>
+            <center>
+                <a href="/message"><button class="btn2">Начать пользоваться!</button></a>
+            </center>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="files/js/script.js"></script>
+<script src="files/js/dropdown.js"></script>
+</html>

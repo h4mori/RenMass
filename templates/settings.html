@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="files/style.css">
+    <link rel="icon" href="files/img/icon.png">
+    <title>RenMass - Настройки</title>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+                <img class="logo" src="files/img/icon.png">
+                <span>RenMass</span>
+            <hr>
+            <div class="dropdown">
+                <img src="files/img/users/{{ username }}.png" alt="User" class="user-icon">
+                <span onclick="myFunction()" class="dropbtn">{{ first_name }} ⬇️</span>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/logout">⬅️ Выход</a>
+                </div>
+            </div>
+            <hr>
+            <nav>
+                <a href="/">Главная</a>
+                <a href="/message">Сообщение</a>
+                <a href="/tables">Таблицы</a>
+                <a href="#">Настройки</a>
+            </nav>
+            <hr>
+            <center>
+                <a>
+                    Copyright<br>© Моисеенко Н. А., 2025 
+                </a>
+            </center>
+        </aside>
+
+        <main class="main-content">
+            <center>
+            <div>
+                <h1>Основное</h1>
+            </div>
+            </center>
+            <div class="profile">
+                <img src="files/img/users/{{ username }}.png" class="profile_avatar" width="128" height="128">
+                <div>
+                    <a style="font-size: 20px;">{{ first_name }}</a> [@{{ username}}]<br>
+                    <span>ID: {{ id }}<br>
+                    E-Mail: {{ email }}<br>
+                    Роль: {{ role }}</span><br><br>
+                </div>
+                <center><form action="/change_avatar" method="POST" enctype=multipart/form-data><input type=file name=file onchange=submit()></form></center>
+            </div>
+            {% if admin %}
+            <center>
+            <div>
+                <h1>Административное [A+]</h1>
+            </div>
+            <form method="POST">
+                <!-- CONTENT -->
+                <h3>SMTP-сервер</h3>
+                {% if smail %}
+                <input type="email" name="user" class="input_wrap" placeholder="Введите адрес эл.почты" value="{{ smail }}" required>
+                <input type="password" name="password" class="input_wrap" placeholder="Введите секретный ключ" value="{{ spassword }}" required>
+                <input type="text" name="server" class="input_wrap" placeholder="Укажите SMTP-сервер" value="{{ sserver }}" required>
+                <input type="number" name="port" class="input_wrap" placeholder="Укажите порт SMTP-сервера" value="{{ sport }}" required><br>
+                {% else %}
+                <input type="email" name="user" class="input_wrap" placeholder="Введите адрес эл.почты" required>
+                <input type="password" name="password" class="input_wrap" placeholder="Введите секретный ключ" required>
+                <input type="text" name="server" class="input_wrap" placeholder="Укажите SMTP-сервер" required>
+                <input type="number" name="port" class="input_wrap" placeholder="Укажите порт SMTP-сервера" required><br>
+                {% endif %}
+                <button type="submit" class="btn2">Сохранить</button>
+            </form>
+            <hr class="main">
+            <form method="POST">
+                <!-- CONTENT -->
+                <h3>База данных<br>[Выберите действие]</h3>
+                <select id="action" name="action">
+                    <option value="backup">Резервное копирование</option>
+                    <option value="flush">Сброс данных</option>
+                    <option value="restore">Восстановить из копии</option>
+                </select>
+                <button type="submit" class="btn2">Выполнить</button>
+            </form>
+            <hr class="main">
+            <form method="POST">
+                <!-- CONTENT -->
+                <h3>Пользователи</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>username</th>
+                      <th>password</th>
+                      <th>email</th>
+                      <th>role</th>
+                      <th>status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{ users }}
+                  </tbody>
+                </table>
+                <input type="number" name="id" class="input_wrap" placeholder="id" required>
+                <input type="text" name="row" class="input_wrap" placeholder="Название ячейки" required>
+                <input type="text" name="newrow" class="input_wrap" placeholder="Новое значение" required><br>
+                <button type="submit" class="btn2">Выполнить</button>
+            </form>
+            <hr class="main">
+            <form method="POST">
+                <input type="text" name="new_username" class="input_wrap" placeholder="Имя пользователя" required>
+                <input type="email" name="new_email" class="input_wrap" placeholder="Эл. Почта" required>
+                <input type="text" name="new_first_name" class="input_wrap" placeholder="Имя человека" required>
+                <button type="submit" class="btn2">Добавить пользователя</button><br><br>
+            </form>
+            </center>
+            {% endif %}
+        </main>
+    </div>
+</body>
+<script src="files/js/script.js"></script>
+<script src="files/js/dropdown.js"></script>
+</html>
